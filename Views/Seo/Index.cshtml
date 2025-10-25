@@ -1,0 +1,23 @@
+@{
+    ViewBag.Title = "SEO Optimizer Tool";
+}
+
+<div class="d-flex justify-content-center align-items-center min-vh-75">
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 550px;">
+        <form asp-controller="Seo" asp-action="Analyze" method="post" novalidate>
+            <div class="mb-3">
+                <label for="urlInput" class="form-label">Enter Website URL</label>
+                <input type="url" class="form-control form-control-lg" id="urlInput" name="url" placeholder="https://example.com" required />
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Analyze</button>
+            </div>
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger mt-3" role="alert">
+                    @ViewData.ModelState.Values.SelectMany(v => v.Errors).FirstOrDefault()?.ErrorMessage
+                </div>
+            }
+        </form>
+    </div>
+</div>

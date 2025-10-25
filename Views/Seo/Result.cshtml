@@ -1,0 +1,40 @@
+@model SeoOptimizerTool.Models.SeoResult
+
+<div class="container my-4">
+    <div class="card shadow-sm p-4 mx-auto" style="max-width: 750px;">
+        <h2 class="text-center mb-4">SEO Analysis for <a href="@Model.Url" target="_blank">@Model.Url</a></h2>
+
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <tr><th>Title</th><td>@Model.Title</td></tr>
+                <tr><th>Meta Description</th><td>@Model.MetaDescription</td></tr>
+                <tr><th>Meta Keywords</th><td>@Model.MetaKeywords</td></tr>
+                <tr><th>H1 Count</th><td>@Model.HeadingCountH1</td></tr>
+                <tr><th>H2 Count</th><td>@Model.HeadingCountH2</td></tr>
+                <tr><th>Body Word Count</th><td>@Model.WordCount</td></tr>
+                <tr><th>Canonical URL</th><td><a href="@Model.CanonicalUrl" target="_blank">@Model.CanonicalUrl</a></td></tr>
+                <tr><th>Robots Meta Tag</th><td>@Model.RobotsMeta</td></tr>
+                <tr><th>Images Missing ALT</th><td>@Model.ImagesMissingAlt</td></tr>
+                <tr><th>Internal Links Count</th><td>@Model.InternalLinksCount</td></tr>
+                <tr><th>External Links Count</th><td>@Model.ExternalLinksCount</td></tr>
+            </tbody>
+        </table>
+
+        @if (Model.Warnings.Any())
+        {
+            <div class="alert alert-warning mt-4" role="alert">
+                <h5>Warnings</h5>
+                <ul class="mb-0">
+                    @foreach (var warning in Model.Warnings)
+                    {
+                        <li>@warning</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <div class="d-flex justify-content-center mt-4">
+            <a asp-controller="Seo" asp-action="Index" class="btn btn-outline-primary">Analyze Another URL</a>
+        </div>
+    </div>
+</div>
