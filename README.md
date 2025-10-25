@@ -50,7 +50,7 @@ These instructions assume you have the **.NET SDK** (version [e.g., 7.0 or 8.0])
 
 1.  Navigate to the project directory containing the `.csproj` file:
     ```bash
-    cd [Your Project Folder Name] 
+    cd Project Name
     ```
 2.  Run the application:
     ```bash
